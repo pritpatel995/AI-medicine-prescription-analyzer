@@ -1,0 +1,51 @@
+{
+"expo": {
+"name": "Rx Analyzer",
+"slug": "rx-analyzer",
+"version": "1.0.0",
+"orientation": "portrait",
+"userInterfaceStyle": "light",
+"splash": {
+"backgroundColor": "#F4F7FB"
+},
+"assetBundlePatterns": [
+"**/*"
+],
+"ios": {
+"supportsTablet": false,
+"infoPlist": {
+"NSCameraUsageDescription": "Rx Analyzer needs camera access to scan your prescriptions.",
+"NSPhotoLibraryUsageDescription": "Rx Analyzer needs photo library access to select prescription images.",
+"NSSpeechRecognitionUsageDescription": "Rx Analyzer uses speech recognition to understand your voice questions.",
+"NSMicrophoneUsageDescription": "Rx Analyzer needs microphone access so you can ask questions using your voice."
+}
+},
+"android": {
+"permissions": [
+"CAMERA",
+"READ_EXTERNAL_STORAGE",
+"RECORD_AUDIO",
+"SCHEDULE_EXACT_ALARM"
+],
+"package": "com.rxanalyzer.app"
+},
+"plugins": [
+"expo-secure-store",
+[
+"expo-camera",
+{
+"cameraPermission": "Rx Analyzer needs camera access to scan your prescriptions."
+}
+],
+[
+"expo-notifications",
+{
+
+"color": "#2F6FED"
+}
+]
+
+]
+
+}
+}

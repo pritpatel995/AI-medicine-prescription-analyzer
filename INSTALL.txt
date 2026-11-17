@@ -1,0 +1,35 @@
+RX ANALYZER - TWO FEATURE UPDATE
+
+Copy the folders backend and frontend from this package into your existing D:\Rx-Analyzer folder, choosing overwrite/replace when prompted. This package contains only the changed/new files, not the entire project.
+
+Backend files replaced/added:
+- backend\app\ocr_engine.py (replace with this file; fixes get_reader missing return)
+- backend\app\routers\scan_routes.py
+- backend\app\schemas.py
+- backend\app\routers\appointment_routes.py (new)
+- backend\app\main.py
+- backend\app\database.py
+
+Frontend files replaced/added:
+- frontend\services\api.js
+- frontend\navigation\AppNavigator.js
+- frontend\screens\ReviewScreen.js
+- frontend\screens\AppointmentsScreen.js (new)
+
+RUN BACKEND (PowerShell terminal 1):
+cd D:\Rx-Analyzer\backend
+.\.venv\Scripts\Activate.ps1
+python -m uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+
+RUN FRONTEND (PowerShell terminal 2):
+cd D:\Rx-Analyzer\frontend
+npx expo start --clear
+
+If your venv is named differently, activate the existing working backend venv instead. No new npm dependency is required. Open API docs at http://127.0.0.1:8000/docs on your PC. The appointments collection/index is created on backend startup.
+
+NOTES:
+- Appointment dates use YYYY-MM-DD, times use 24-hour HH:MM.
+- Appointment records are filtered by authenticated user.
+- OCR confidence is EasyOCR's confidence for each detected text line, not medical correctness.
+- Confirm medicine name, strength, dosage and instructions against the prescription before saving.
+- The scan endpoint continues to use multipart file upload; api.js already packages a React Native image URI as a file object.
